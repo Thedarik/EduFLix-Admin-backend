@@ -1,8 +1,6 @@
 package com.eduflix.eduflix.Service;
 
-import com.eduflix.eduflix.Entity.Course;
 import com.eduflix.eduflix.Entity.Image;
-import com.eduflix.eduflix.Entity.Users;
 import com.eduflix.eduflix.Repository.CourseRepository;
 import com.eduflix.eduflix.Repository.ImageRepository;
 import com.eduflix.eduflix.Repository.UsersRepository;

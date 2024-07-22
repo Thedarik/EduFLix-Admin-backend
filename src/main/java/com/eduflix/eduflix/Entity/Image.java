@@ -2,7 +2,6 @@ package com.eduflix.eduflix.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 @Entity
 @Getter
