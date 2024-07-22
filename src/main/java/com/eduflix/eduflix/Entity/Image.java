@@ -2,6 +2,7 @@ package com.eduflix.eduflix.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 @Entity
 @Getter
@@ -9,7 +10,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Image {
+public class    Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -20,9 +20,9 @@ public class ImageController {
     private final ImageService imageService;
 
     @PostMapping("/upload")
-    public HttpEntity<Image> uploadImage(@RequestParam("image") MultipartFile file, @RequestBody Long userId) {
+    public HttpEntity<Image> uploadImage(@RequestParam("image") MultipartFile file, @RequestBody Long userId, @RequestBody Long courseId) {
         try {
-            return imageService.uploadImage(file, userId);
+            return imageService.uploadImage(file, userId, courseId);
         } catch (IOException e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
