@@ -18,4 +18,7 @@ public class Course implements Serializable {
     private String name;
     @Column(nullable = false)
     private String description;
+
+    @OneToOne
+    private Image image;
 }
