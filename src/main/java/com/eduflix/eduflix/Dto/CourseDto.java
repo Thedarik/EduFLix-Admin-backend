@@ -13,4 +13,7 @@ public class CourseDto {
     private String name;
     @NotEmpty(message = "cannot be empty!")
     private String description;
+    @NotEmpty(message = "cannot be empty!")
+    private String title;
+    private byte[] image;
 }

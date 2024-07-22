@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     private final UsersService usersService;
 
-    @GetMapping
+    @GetMapping("/list")
     public HttpEntity<?> getAllUsers(){
         return usersService.getAll();
     }

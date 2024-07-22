@@ -34,7 +34,12 @@ public class Security {
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers(SWAGGER_URLS).permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
-//                        .requestMatchers("/api/user/**").permitAll()
+                        .requestMatchers("/api/course/filter",
+                                "/api/course/my-courses").permitAll()
+                        .requestMatchers("/api/user").permitAll()
+                        // images should be uploaded in admin(for courses), student and teacher panels
+                        .requestMatchers("/api/image/**").hasAnyRole("ADMIN", "STUDENT", "TEACHER")
+                        .requestMatchers("/api/student/create").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 );
         http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);

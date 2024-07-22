@@ -1,6 +1,7 @@
 package com.eduflix.eduflix.Dto;
 
 import com.eduflix.eduflix.Entity.Classes;
+import com.eduflix.eduflix.Enum.Gender;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -31,5 +32,7 @@ public class StudentDto {
     private LocalDate enrollmentDate;
     @NotEmpty(message = "cannot be empty!")
     private double payStatus;
+    @NotEmpty(message = "cannot be empty!")
+    private Gender gender;
     private Set<Classes> classes;
 }

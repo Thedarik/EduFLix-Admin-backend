@@ -14,10 +14,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserDto {
     @NotEmpty(message = "cannot be empty!")
-    @Size(min = 7)
+    @Size(min = 8)
     public String username;
     @NotEmpty(message = "cannot be empty!")
-    @Size(min = 7)
+    @Size(min = 8)
     public String password;
     @NotEmpty(message = "cannot be empty!")
     public UserRole role;

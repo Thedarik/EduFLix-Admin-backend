@@ -14,11 +14,12 @@ public class Course implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String name;
     @Column(nullable = false)
     private String description;
-
+    @JoinColumn(nullable = false)
+    private String title;
     @OneToOne
     private Image image;
 }
