@@ -3,6 +3,7 @@ package com.eduflix.eduflix.Entity;
 import com.eduflix.eduflix.Enum.Gender;
 import com.eduflix.eduflix.Enum.UserRole;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +29,10 @@ public class Users implements Serializable {
     public UserRole role;
     @Enumerated(EnumType.STRING)
     public Gender gender;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Image image;
+
     public Boolean enabled = false;
     public Boolean locked = false;
     public LocalDate createdAt;
