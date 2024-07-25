@@ -22,8 +22,8 @@ public class UserController {
         return usersService.saveUser(userDto);
     }
     @DeleteMapping("/{id}")
-    public void deleteUser(@PathVariable Long id){
-        usersService.deleteChosenUser(id);
+    public HttpEntity<?> deleteUser(@PathVariable Long id){
+        return usersService.deleteChosenUser(id);
     }
 
     @PutMapping("/{id}")
