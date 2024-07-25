@@ -12,9 +12,11 @@ import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 
@@ -27,8 +29,11 @@ public class UsersService {
     public HttpEntity<?> getAll() {
         return ResponseEntity.ok(usersRepository.findAll(Sort.by(Sort.Direction.ASC, "id")));
     }
-
+    @Transactional
     public HttpEntity<?> saveUser(UserDto userDto) {
+        if (usersRepository.existsByUsername(userDto.username)){
+            return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body("already exists!");
+        }
         Users user = usersMapper.toEntity(userDto);
         user.setCreatedAt(LocalDate.now());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -36,16 +41,17 @@ public class UsersService {
         return ResponseEntity.ok(saved);
     }
 
-    public void deleteChosenUser(Long id) {
+    public HttpEntity<?> deleteChosenUser(Long id) {
         usersRepository.deleteById(id);
+        return ResponseEntity.status(HttpStatus.OK).body("successful deleted");
     }
 
     public HttpEntity<?> updateUser(Long id, UserDto userDto) {
         Users users = usersMapper.toEntity(userDto);
         users.setId(id);
         users.setPassword(passwordEncoder.encode(users.getPassword()));
-        Users saved = usersRepository.save(users);
-        return ResponseEntity.ok(saved);
+        usersRepository.save(users);
+        return ResponseEntity.status(200).body("User successful updated");
     }
 
     public GeneratePassAndUsername saveUser2(StudentDto student) {
