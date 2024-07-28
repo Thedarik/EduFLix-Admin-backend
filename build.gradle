@@ -46,6 +46,9 @@ dependencies {
 	implementation 'io.jsonwebtoken:jjwt-jackson:0.12.5'
 	implementation 'io.jsonwebtoken:jjwt-impl:0.12.6'
 	implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
+	implementation group: 'com.google.firebase', name: 'firebase-admin', version: '9.2.0'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.0'
 	implementation('org.mapstruct:mapstruct:1.5.5.Final')
 	annotationProcessor('org.mapstruct:mapstruct-processor:1.5.5.Final')
 	implementation('org.apache.pdfbox:pdfbox:2.0.24')

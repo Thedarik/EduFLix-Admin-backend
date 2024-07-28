@@ -37,7 +37,9 @@ public class Security {
                         .requestMatchers("/api/course/filter",
                                 "/api/course/my-courses").permitAll()
                         .requestMatchers("/api/user").permitAll()
-                        // images should be uploaded in admin(for courses), student and teacher panels
+                        .requestMatchers("/api/support/from-student").hasRole("STUDENT")
+                        .requestMatchers("/ws/**","/chat/**").hasAnyRole("STUDENT", "ADMIN")
+                        // images should be uploaded in admin(for courses), student and teacher panells
                         .requestMatchers("/api/image/**").hasAnyRole("ADMIN", "STUDENT", "TEACHER")
                         .requestMatchers("/api/student/create").hasRole("ADMIN")
                         .anyRequest().authenticated()
