@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Setter
 @Getter
@@ -16,6 +17,11 @@ public class ExamResult implements Serializable {
     private Long id;
     @Column(name = "result %")
     private double result;
+    @JoinColumn(name = "exam_time")
+    private LocalDateTime date;
+    @ManyToOne
+    @JoinColumn
+    private Classes classes;
     @ManyToOne
     private Student student;
 }

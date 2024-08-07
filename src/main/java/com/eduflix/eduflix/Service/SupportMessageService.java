@@ -54,8 +54,6 @@ public class SupportMessageService {
                             "message", message.getMessage(),
                             "user", user
                     );
-//                    String formattedMessage = String.format("From %s: %s - %s",
-//                            student.getFirstName(), message.getTitle(), message.getMessage());
                     String jsonMessage = objectMapperProvider.jsonMapper().writeValueAsString(messageData);
                     session.sendMessage(new TextMessage(jsonMessage));
                     //save message to db with sender

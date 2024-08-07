@@ -3,7 +3,6 @@ package com.eduflix.eduflix.Service;
 import com.eduflix.eduflix.Dto.StudentDto;
 import com.eduflix.eduflix.Dto.UserDto;
 import com.eduflix.eduflix.Entity.Users;
-import com.eduflix.eduflix.Enum.Gender;
 import com.eduflix.eduflix.Enum.UserRole;
 import com.eduflix.eduflix.Repository.UsersRepository;
 import com.eduflix.eduflix.controller.GeneratePassAndUsername;
@@ -19,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -75,5 +75,13 @@ public class UsersService {
 
     public String generatePassword() {
         return RandomStringUtils.randomAlphanumeric(8);
+    }
+
+    public Optional<Users> findById(Long userId) {
+        return usersRepository.findById(userId);
+    }
+
+    public Optional<Users> findByUsername(String username) {
+        return usersRepository.findByUsername(username);
     }
 }
