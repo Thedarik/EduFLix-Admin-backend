@@ -37,6 +37,11 @@ public class Security {
                         .requestMatchers("/api/course/filter",
                                 "/api/course/my-courses").permitAll()
                         .requestMatchers("/api/user").permitAll()
+                        // only admin and student should get profile and exam data of students
+                        .requestMatchers("/api/profile/get").hasAnyRole("STUDENT", "ADMIN")
+                        .requestMatchers("/api/profile/image/**").hasAnyRole("ADMIN", "STUDENT")
+                        .requestMatchers("/api/exam/results").hasAnyRole("STUDENT", "ADMIN")
+                        // only students should send support message to admin
                         .requestMatchers("/api/support/from-student").hasRole("STUDENT")
                         .requestMatchers("/ws/**","/chat/**").hasAnyRole("STUDENT", "ADMIN")
                         // images should be uploaded in admin(for courses), student and teacher panells

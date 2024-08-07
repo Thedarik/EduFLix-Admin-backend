@@ -35,6 +35,4 @@ public class Student implements Serializable {
     private Users users;
     @OneToMany
     private Set<Classes> classes;
-
-
 }
