@@ -18,6 +18,8 @@ public class Classes implements Serializable {
     private int studentNumber;
     @Column(nullable = false)
     private double classFee;
+    @JoinColumn
+    private String className;
     @Column(nullable = false)
     private String days;
     @Column(nullable = false)
