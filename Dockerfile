@@ -1,14 +1,14 @@
-# Stage 1: Use a base image with Java 21 and a minimal runtime
-FROM eclipse-temurin:21-jdk-alpine
+# Use a base image that includes Java
+FROM openjdk:21-jdk-slim
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the built JAR file into the container
+# Copy the JAR file into the container
 COPY build/libs/*.jar app.jar
 
-# Define the command to run the application
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Expose the port the app runs on
+EXPOSE 8085
 
-# Expose the port on which the application will run
-EXPOSE 8084
+# Command to run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
