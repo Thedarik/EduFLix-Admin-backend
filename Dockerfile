@@ -1,6 +1,6 @@
 # Stage 1: Build the application using Gradle
 FROM gradle:jdk21 as build
-COPY . .
+COPY . /home/gradle/project
 # Build the application
 RUN gradle clean build -x test
 
@@ -8,7 +8,7 @@ RUN gradle clean build -x test
 FROM openjdk:21-jdk-slim
 
 # Copy the built JAR file from the build stage
-COPY --from=build /build/libs/eduflix-0.0.1-SNAPSHOT.jar eduflix.jar
+COPY --from=build /home/gradle/project/build/libs/eduflix-0.0.1-SNAPSHOT.jar eduflix.jar
 
 # Expose the port on which the application will run
 EXPOSE 8084
