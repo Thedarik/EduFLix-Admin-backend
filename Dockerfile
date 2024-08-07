@@ -1,14 +1,30 @@
-# Use a base image that includes Java
-FROM openjdk:21-jdk-slim
+# Stage 1: Build the application using Gradle
+FROM gradle:jdk21 as build
 
-# Set the working directory
+# Set the working directory for Gradle
 WORKDIR /app
 
-# Copy the JAR file into the container
-COPY build/libs/*.jar app.jar
+# Copy Gradle build files
+COPY build.gradle settings.gradle ./
+COPY src ./src
 
-# Expose the port the app runs on
-EXPOSE 8085
+# Build the application
+RUN gradle clean build -x test
 
-# Command to run the application
+# Stage 2: Create a minimal runtime image
+FROM openjdk:21-jdk-slim
+
+# Set the working directory for the runtime image
+WORKDIR /app
+
+# Copy the built JAR file from the build stage
+COPY --from=build /app/build/libs/eduflix-0.0.1-SNAPSHOT.jar app.jar
+
+# Expose the port on which the application will run
+EXPOSE 8084
+
+# Set the author label
+LABEL authors="islom"
+
+# Define the command to run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
