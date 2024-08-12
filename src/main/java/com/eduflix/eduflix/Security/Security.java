@@ -23,7 +23,7 @@ public class Security {
             "/v3/api-docs/**",
             "/swagger-ui/**",
             "/swagger-ui.html",
-            "/webjars/**"
+            "/webjars/**",
     };
 
     @Bean
@@ -37,6 +37,9 @@ public class Security {
                         .requestMatchers("/api/course/filter",
                                 "/api/course/my-courses").permitAll()
                         .requestMatchers("/api/user").permitAll()
+                        .requestMatchers("/api/course/add").permitAll()
+                        .requestMatchers("/api/course/image").permitAll()
+//                        .requestMatchers("/api/image/upload").permitAll()
                         // only admin and student should get profile and exam data of students
                         .requestMatchers("/api/profile/get").hasAnyRole("STUDENT", "ADMIN")
                         .requestMatchers("/api/profile/image/**").hasAnyRole("ADMIN", "STUDENT")

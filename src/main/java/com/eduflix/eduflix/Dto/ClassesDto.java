@@ -16,6 +16,8 @@ public class ClassesDto {
     @NotEmpty(message = "cannot be empty!")
     private int studentNumber;
     @NotEmpty(message = "cannot be empty!")
+    private String name;
+    @NotEmpty(message = "cannot be empty!")
     private double classFee;
     @NotEmpty(message = "cannot be empty!")
     private String days;
@@ -24,7 +26,8 @@ public class ClassesDto {
     @NotEmpty(message = "cannot be empty!")
     private String room;
     @NotEmpty(message = "cannot be empty!")
-    private Teacher teacher;
+    private Long teacherId;
     @NotEmpty(message = "cannot be empty!")
-    private Course course;
+    private Long courseId;
+
 }

@@ -1,4 +1,4 @@
-package com.eduflix.eduflix.controller;
+package com.eduflix.eduflix.Dto;
 
 import lombok.Data;
 
