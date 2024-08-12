@@ -18,6 +18,7 @@ public class SupportMessageController {
     @GetMapping("/from-student")
     public ResponseEntity<Object> sendToAdmin(@RequestBody SupportMessageDto message) {
         if (studentService.exists(message.getId())) {
+            //todo: change sendMessageFromStudent() with websocket in js code
             supportMessageService.sendMessageFromStudent(message.getId(), message);
             return ResponseEntity.ok("Successfully sent message");
         } else

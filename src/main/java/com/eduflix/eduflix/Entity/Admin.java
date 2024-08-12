@@ -14,6 +14,14 @@ public class Admin implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @JoinColumn(nullable = false)
+    private String firstname;
+    @JoinColumn(nullable = false)
+    private String lastname;
+    @JoinColumn(unique = true, nullable = false)
+    private String contact;
+    @JoinColumn(unique = true, nullable = false)
+    private String email;
     @OneToOne(optional = false)
     private Users users;
 }
