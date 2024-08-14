@@ -22,8 +22,7 @@ public class StudentController {
 
         if (studentService.existsByEmail(student.getEmail())) {
             return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body("already exists!");
-        }
-        else
+        } else
             return ResponseEntity.ok(studentService.saveStudent(student));
 
 

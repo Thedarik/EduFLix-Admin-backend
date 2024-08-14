@@ -2,10 +2,11 @@ package com.eduflix.eduflix.controller;
 
 import com.eduflix.eduflix.Dto.ClassesDto;
 import com.eduflix.eduflix.Entity.Classes;
-import com.eduflix.eduflix.Entity.Course;
 import com.eduflix.eduflix.Service.ClassService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,7 +20,7 @@ public class ClassController {
         try {
             Classes savedClass = classService.saveNewClass(classesDto);
             if (savedClass != null) {
-                return ResponseEntity.status(HttpStatus.CREATED).body("Class successfully created! Class: "+savedClass);
+                return ResponseEntity.status(HttpStatus.CREATED).body("Class successfully created! Class: " + savedClass);
             } else {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to create class");
             }

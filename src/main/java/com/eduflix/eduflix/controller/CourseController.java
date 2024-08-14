@@ -1,7 +1,6 @@
 package com.eduflix.eduflix.controller;
 
 import com.eduflix.eduflix.Dto.CourseDto;
-import com.eduflix.eduflix.Dto.CourseWithClassDto;
 import com.eduflix.eduflix.Dto.CourseWithIdDto;
 import com.eduflix.eduflix.Entity.Course;
 import com.eduflix.eduflix.Service.CourseService;
