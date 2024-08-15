@@ -22,10 +22,9 @@ public class ExamResultController {
 
     @GetMapping("/results")
     public ResponseEntity<List<ExamResultResponseDto>> getExamResults(@RequestParam("studentId") Long studentId) {
-        if (studentService.exists(studentId)){
+        if (studentService.exists(studentId)) {
             return ResponseEntity.ok(examResultService.getResultsByStudentId(studentId));
-        }
-        else
+        } else
             return ResponseEntity.notFound().build();
     }
 }

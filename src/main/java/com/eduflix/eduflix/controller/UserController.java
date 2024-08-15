@@ -13,7 +13,7 @@ public class UserController {
     private final UsersService usersService;
 
     @GetMapping("/list")
-    public HttpEntity<?> getAllUsers(){
+    public HttpEntity<?> getAllUsers() {
         return usersService.getAll();
     }
 
@@ -21,13 +21,14 @@ public class UserController {
     public HttpEntity<?> saveNewUser(@RequestBody UserDto userDto) {
         return usersService.saveUser(userDto);
     }
+
     @DeleteMapping("/{id}")
-    public HttpEntity<?> deleteUser(@PathVariable Long id){
+    public HttpEntity<?> deleteUser(@PathVariable Long id) {
         return usersService.deleteChosenUser(id);
     }
 
     @PutMapping("/{id}")
-    public HttpEntity<?> updateUser(@PathVariable Long id, @RequestBody UserDto userDto){
+    public HttpEntity<?> updateUser(@PathVariable Long id, @RequestBody UserDto userDto) {
         return usersService.updateUser(id, userDto);
     }
 }

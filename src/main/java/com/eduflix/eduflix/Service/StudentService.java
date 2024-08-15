@@ -42,7 +42,7 @@ public class StudentService {
             course.setTitle(c.getCourse().getTitle());
             course.setDescription(c.getCourse().getDescription());
             course.setName(c.getCourse().getName());
-            course.setImage(c.getCourse().getImage().getData());
+//            course.setImage(c.getCourse().getImage().getData());
             courses.add(course);
         }
         return courses;

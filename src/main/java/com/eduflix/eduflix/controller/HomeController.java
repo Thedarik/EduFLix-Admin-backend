@@ -20,12 +20,12 @@ public class HomeController {
     private final HomeService homeService;
 
     @GetMapping("/masters")
-    HttpEntity<List<MasterDTO>> mastersList(){
+    HttpEntity<List<MasterDTO>> mastersList() {
         return homeService.getMastersList();
     }
 
     @GetMapping("/courses")
-    HttpEntity<List<CourseGetDTO>> homePageCourses(){
+    HttpEntity<List<CourseGetDTO>> homePageCourses() {
         return homeService.getCoursesList();
     }
 
