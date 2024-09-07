@@ -16,4 +16,6 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
     Boolean existsByTitle(String title);
     List<Course> findByTitle(String title);
 
+    @Query("select count(*) from Course")
+    int countCourse();
 }

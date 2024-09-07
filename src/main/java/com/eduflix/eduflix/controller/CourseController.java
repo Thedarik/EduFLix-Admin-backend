@@ -22,12 +22,14 @@ public class CourseController {
     private final StudentService studentService;
 
     @PostMapping("/add")
-    public HttpEntity<?> addCourse(@RequestBody CourseDto courseDto, @RequestParam("image") MultipartFile image) {
+    public HttpEntity<?> addCourse(@RequestBody CourseDto courseDto,
+                                   @RequestParam("image") MultipartFile image) {
         try {
             Course savedCourse = courseService.saveNewCourse(courseDto, image);
             return ResponseEntity.status(HttpStatus.CREATED).body(savedCourse);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while creating the course");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("An error occurred while creating the course");
         }
     }
 
@@ -66,7 +68,8 @@ public class CourseController {
     }
 
     @PutMapping("/update/{id}")
-    public HttpEntity<?> updateCourseFields(@PathVariable Long id, @RequestBody CourseWithIdDto courseWithIdDto) {
+    public HttpEntity<?> updateCourseFields(@PathVariable Long id,
+                                            @RequestBody CourseWithIdDto courseWithIdDto) {
         if (courseService.exists(id)) {
             courseService.updateCourse(courseWithIdDto, id);
             return ResponseEntity.status(HttpStatus.ACCEPTED).body("successfully updated");

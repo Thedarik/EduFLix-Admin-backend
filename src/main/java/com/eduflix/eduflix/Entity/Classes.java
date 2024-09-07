@@ -24,6 +24,7 @@ public class Classes implements Serializable {
     private String days;
     @Column(nullable = false)
     private LocalDate clasTime;
+    //todo: room will be dropped from here and it will be room entity
     @Column(nullable = false)
     private String room;
     @ManyToOne

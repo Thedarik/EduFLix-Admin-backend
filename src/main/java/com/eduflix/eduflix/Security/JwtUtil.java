@@ -1,8 +1,6 @@
 package com.eduflix.eduflix.Security;
 
-import com.eduflix.eduflix.Dto.TokenDecodeDTO;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -16,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Date;
 import java.util.stream.Collectors;
 
@@ -67,7 +64,7 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(bytes);
     }
 
-//        public TokenDecodeDTO getUser(String token) {
+    //        public TokenDecodeDTO getUser(String token) {
 //        Claims claims = Jwts.parser().
 //                verifyWith(getKey())
 //                .build()

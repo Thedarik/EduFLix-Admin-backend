@@ -50,7 +50,12 @@ public class Security {
                         // images should be uploaded in admin(for courses), student and teacher panells
                         .requestMatchers("/api/image/**").hasAnyRole("ADMIN", "STUDENT", "TEACHER")
                         .requestMatchers("/api/student/create").hasRole("ADMIN")
-                        .requestMatchers("/api/dashboard/all-course").permitAll()
+                        .requestMatchers("/api/dashboard/all-course",
+                                "/api/dashboard/total-signing",
+                                "/api/dashboard/monthly-signing",
+                                "/api/dashboard/total-course",
+                                "/api/dashboard/total-class",
+                                "/api/dashboard/mon-subsc").permitAll()
                         .anyRequest().authenticated()
                 );
         http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);

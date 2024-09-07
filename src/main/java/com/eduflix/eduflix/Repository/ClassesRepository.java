@@ -3,6 +3,7 @@ package com.eduflix.eduflix.Repository;
 import com.eduflix.eduflix.Entity.Classes;
 import com.eduflix.eduflix.Entity.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -19,4 +20,7 @@ public interface ClassesRepository extends JpaRepository<Classes, Long> {
             FROM Classes a
             WHERE a.course.id=:id""")
     int countStudents(@Param("id") Long id);
+
+    @Query("select count(*) from Classes")
+    int countClass();
 }
