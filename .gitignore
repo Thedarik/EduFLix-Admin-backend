@@ -1,7 +1,11 @@
 HELP.md
-.idea
 .gradle
 build/
+daemon/
+caches/
+jdks/
+.tmp/
+native/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
@@ -10,9 +14,6 @@ build/
 .apt_generated
 .classpath
 .factorypath
-caches
-jdks
-.tmp
 .project
 .settings
 .springBeans
@@ -22,6 +23,7 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
+.idea
 *.iws
 *.iml
 *.ipr
