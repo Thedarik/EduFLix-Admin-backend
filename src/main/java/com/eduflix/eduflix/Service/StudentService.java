@@ -7,6 +7,7 @@ import com.eduflix.eduflix.Dto.StudentProfileResponseDto;
 import com.eduflix.eduflix.Entity.Classes;
 import com.eduflix.eduflix.Entity.Student;
 import com.eduflix.eduflix.Entity.Users;
+import com.eduflix.eduflix.Exceptions.NotFoundException;
 import com.eduflix.eduflix.Repository.StudentRepository;
 import com.eduflix.eduflix.Repository.UsersRepository;
 import com.eduflix.eduflix.controller.GeneratePassAndUsername;
@@ -17,9 +18,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -114,14 +114,46 @@ public class StudentService {
             if (request.getUsername() != null) {
                 user1.setUsername(request.getUsername());
             }
-            if (request.getGender() != null) {
-                user1.setGender(request.getGender());
-            }
-
             usersRepository.save(user1);
             studentRepository.save(student1);
             return "updated";
         } else
             throw new UsernameNotFoundException("User not found");
+    }
+
+    public List<StudentProfileResponseDto> findAll() {
+        List<Student> students = studentRepository.findAll();
+
+        List<StudentProfileResponseDto> studentProfileResponseDtos = new ArrayList<>(students.size());
+
+        for (Student student : students) {
+            studentProfileResponseDtos.add(convertToDto(student));
+        }
+
+        return studentProfileResponseDtos;
+    }
+
+    private StudentProfileResponseDto convertToDto(Student student) {
+        String imageUrl = ServletUriComponentsBuilder.fromHttpUrl("http://localhost:8084/api/profile/image/")
+                .path(student.getUsers().getId().toString())
+                .toUriString();
+
+        return new StudentProfileResponseDto(
+                student.getId(),
+                student.getFirstName(),
+                student.getLastName(),
+                student.getEmail(),
+                student.getPhone(),
+                student.getParentContact(),
+                student.getUsers().getGender(),
+                student.getPayStatus(),
+                imageUrl
+        );
+    }
+
+    public Student findById(Long id) throws NotFoundException {
+        return studentRepository.findById(id).orElseThrow(
+                ()-> new NotFoundException("student not found!")
+        );
     }
 }

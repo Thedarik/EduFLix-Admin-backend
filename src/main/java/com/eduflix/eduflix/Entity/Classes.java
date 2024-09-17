@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Setter
 @Getter
@@ -15,20 +16,17 @@ public class Classes implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private int studentNumber;
     @Column(nullable = false)
     private double classFee;
-    @JoinColumn
-    private String className;
     @Column(nullable = false)
     private String days;
     @Column(nullable = false)
-    private LocalDate clasTime;
-    //todo: room will be dropped from here and it will be room entity
-    @Column(nullable = false)
-    private String room;
+    private String classTime;
     @ManyToOne
     private Teacher teacher;
     @ManyToOne
     private Course course;
+    private LocalDateTime createdAt;
 }

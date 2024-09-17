@@ -1,6 +1,7 @@
 package com.eduflix.eduflix.Service;
 
 import com.eduflix.eduflix.Dto.StudentDto;
+import com.eduflix.eduflix.Dto.TeacherDto;
 import com.eduflix.eduflix.Dto.UserDto;
 import com.eduflix.eduflix.Entity.Users;
 import com.eduflix.eduflix.Enum.UserRole;
@@ -55,13 +56,27 @@ public class UsersService {
     }
 
     public GeneratePassAndUsername saveUser2(StudentDto student) {
-        String generatedPassword = generatePassword();
-        String generatedUsername = generateUsername();
         Users user = new Users();
-        user.setUsername(generatedUsername);
-        user.setPassword(passwordEncoder.encode(generatedPassword));
         user.setGender(student.getGender());
         user.setRole(UserRole.ROLE_STUDENT);
+        return getGeneratePassAndUsername(user);
+    }
+
+    public GeneratePassAndUsername saveUser2(TeacherDto teacher) {
+        Users user = new Users();
+        user.setGender(teacher.getGender());
+        user.setRole(UserRole.ROLE_TEACHER);
+        // i would implement a method that only save a user to db
+        // but in the next stages random username and password might be needed
+        // So i decided to choose this approach(using getGeneratePassAndUsername() for both student and teacher saving )
+        return getGeneratePassAndUsername(user);
+    }
+
+    private GeneratePassAndUsername getGeneratePassAndUsername(Users user) {
+        String generatedPassword = generatePassword();
+        String generatedUsername = generateUsername();
+        user.setUsername(generatedUsername);
+        user.setPassword(passwordEncoder.encode(generatedPassword));
         user.setEnabled(true);
         user.setLocked(false);
         user.setCreatedAt(LocalDate.now());

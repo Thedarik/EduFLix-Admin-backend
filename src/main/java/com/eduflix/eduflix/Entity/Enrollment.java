@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Setter
 @Getter
@@ -20,4 +21,5 @@ public class Enrollment implements Serializable {
     private Admin admin;
     @ManyToOne
     private Course course;
+    private LocalDateTime enrollmentDate;
 }

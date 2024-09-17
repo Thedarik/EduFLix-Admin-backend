@@ -36,7 +36,6 @@ public class Users implements Serializable, UserDetails {
     public UserRole role;
     @Enumerated(EnumType.STRING)
     public Gender gender;
-
     @OneToOne(cascade = CascadeType.ALL)
     private Image image;
 

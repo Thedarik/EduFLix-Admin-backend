@@ -1,6 +1,5 @@
 package com.eduflix.eduflix.Dto;
 
-import com.eduflix.eduflix.Enum.Gender;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,5 +10,4 @@ public class StudentProfileEditRequest {
     private String phone;
     private String parentContact;
     private String username;
-    private Gender gender;
 }

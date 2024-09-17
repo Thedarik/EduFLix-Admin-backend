@@ -15,8 +15,9 @@ public class StudentAttendance implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Boolean hasLesson;
-    private LocalDate date;
     @ManyToOne
     private Student student;
+    //for now i did not add class entity, since student entity already has class entity in it
+    private Boolean atLesson;
+    private LocalDate date;
 }

@@ -5,20 +5,16 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Date;
 
+@Entity
 @Setter
 @Getter
-@Entity
-@Table(name = "time_table_of_week")
-public class TimeTableOfWeek implements Serializable {
+public class LessonSchedule implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date classTime;
     @ManyToOne
     private Classes classes;
-
-
+    @ManyToOne
+    private Room room;
 }

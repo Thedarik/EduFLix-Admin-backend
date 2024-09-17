@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Setter
@@ -35,4 +36,5 @@ public class Student implements Serializable {
     private Users users;
     @OneToMany
     private Set<Classes> classes;
+    private LocalDateTime createdAt;
 }

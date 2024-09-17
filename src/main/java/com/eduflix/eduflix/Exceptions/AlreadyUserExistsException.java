@@ -5,3 +5,4 @@ public class AlreadyUserExistsException extends Throwable {
         super(message);
     }
 }
+

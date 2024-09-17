@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Setter
 @Getter
@@ -22,4 +23,5 @@ public class Course implements Serializable {
     private String title; // ex: English
     @OneToOne
     private Image image;
+    private LocalDateTime createdAt;
 }
