@@ -82,10 +82,9 @@ public class CourseService {
                         clas.getId(),
                         clas.getStudentNumber(),
                         clas.getClassFee(),
-                        clas.getClassName(),
+                        clas.getName(),
                         clas.getDays(),
-                        clas.getClasTime(),
-                        clas.getRoom()))
+                        clas.getClassTime()))
                 .collect(Collectors.toList());
     }
 

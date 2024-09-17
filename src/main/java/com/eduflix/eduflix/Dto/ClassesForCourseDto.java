@@ -17,6 +17,5 @@ public class ClassesForCourseDto {
     private double classFee;
     private String className;
     private String days;
-    private LocalDate clasTime;
-    private String room;
+    private String clasTime;
 }

@@ -32,9 +32,8 @@ public class ClassService {
             Teacher teacher = teacherRepository.findById(classesDto.getTeacherId()).get();
             Classes classes = new Classes();
             classes.setClassFee(classesDto.getClassFee());
-            classes.setClassName(classesDto.getName());
-            classes.setClasTime(classesDto.getClassTime());
-            classes.setRoom(classesDto.getRoom());
+            classes.setName(classesDto.getName());
+            classes.setClassTime(classesDto.getClassTime());
             classes.setStudentNumber(classesDto.getStudentNumber());
             classes.setDays(classesDto.getDays());
             classes.setCourse(course);

@@ -9,6 +9,8 @@ import java.io.Serializable;
 @Entity
 @Setter
 @Getter
+//todo: this entity is used to get schedule of lessons and to know
+// whether any room is empty for new lesson
 public class LessonSchedule implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -24,7 +24,7 @@ public class ExamResultService {
         List<ExamResultResponseDto> responseDtos = new ArrayList<>();
 
         for (ExamResult examResult : result) {
-            String className = examResult.getClasses().getClassName();
+            String className = examResult.getClasses().getName();
             String courseName = examResult.getClasses().getCourse().getName();
             ExamResultResponseDto dto = ExamResultResponseDto.builder()
                     .className(className)

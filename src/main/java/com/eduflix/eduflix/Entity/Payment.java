@@ -25,5 +25,4 @@ public class Payment implements Serializable {
     private Date date;
     @ManyToOne
     private Student student;
-
 }

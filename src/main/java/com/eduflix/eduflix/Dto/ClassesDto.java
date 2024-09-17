@@ -22,7 +22,7 @@ public class ClassesDto {
     @NotEmpty(message = "cannot be empty!")
     private String days;
     @NotEmpty(message = "cannot be empty!")
-    private LocalDate classTime;
+    private String classTime;
     @NotEmpty(message = "cannot be empty!")
     private String room;
     @NotEmpty(message = "cannot be empty!")
