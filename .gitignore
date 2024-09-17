@@ -1,41 +1,33 @@
-### Help documentation ###
 HELP.md
-
-### Gradle ###
-.gradle/
+.idea
+.gradle
+build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### Build directories ###
-build/
-daemon/
-caches/
-.tmp/
-native/
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+caches
+jdks
+.tmp
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
-.idea/
 *.iws
 *.iml
 *.ipr
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-
-### Eclipse/STS specific ###
-.apt_generated
-.classpath
-.tmp
-/jdks
-.factorypath
-.project
-.settings/
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
 
 ### NetBeans ###
 /nbproject/private/
@@ -46,7 +38,3 @@ bin/
 
 ### VS Code ###
 .vscode/
-
-### Operating System specific ###
-.DS_Store
-Thumbs.db
