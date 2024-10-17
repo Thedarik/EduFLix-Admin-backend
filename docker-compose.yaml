@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: eduflix-db
+    environment:
+      POSTGRES_DB: edu_flix
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 08062002
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  app:
+    image: eduflix-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: eduflix-app
+    ports:
+      - "8085:8085"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/edu_flix
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 08062002
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
